@@ -687,7 +687,7 @@ function setupViewControls() {
     }
   }, {passive:false});
   viewport.addEventListener("touchmove", (e) => {
-    e.preventDefault();
+    if (panning || e.touches.length >= 2) e.preventDefault();
     const d = currentData();
     if (e.touches.length === 1 && panning) {
       d.view.tx = e.touches[0].clientX - startX;
