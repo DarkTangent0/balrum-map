@@ -703,9 +703,10 @@ function switchMap(mapId) {
   state.mapId = mapId;
   state.selectedId = null;
   ensureMapState(mapId);
-  loadSavedForMap(mapId);
+  const hasSaved = loadSavedForMap(mapId);
   renderCanvasGeometry();
   renderAll();
+  if (!hasSaved) centerView();
 }
 
 function renderAll() {
